@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 public class Starter implements CommandLineRunner {
     @Autowired
     UserController userController;
+    private User newUser;
+
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Return user with ID=1: ");
@@ -22,12 +24,23 @@ public class Starter implements CommandLineRunner {
         }
 
         System.out.println("Dodawnie nowego usera");
-        userController.createNewUser(new User(4, "Adam", "Kowalski", "Poland"));
+        newUser = new User(4, "Adam", "Kowalski", "Poland");
+        userController.createNewUser(newUser);
 
         System.out.println("Return all user: ");
         for (User u :
                 userController.getAllUser()) {
             System.out.println(u);
         }
+        User updaterUser =  newUser;
+        updaterUser.setLastName("Wójcicki");
+        System.out.println("Update");
+        userController.updateUser(updaterUser);
+        userController.deleteUser(1);
+        for (User u :
+                userController.getAllUser()) {
+            System.out.println(u);
+        }
+
     }
 }
