@@ -23,7 +23,7 @@ public class Starter implements CommandLineRunner {
             System.out.println(u);
         }
 
-        System.out.println("Dodawnie nowego usera");
+        System.out.println("Dodawanie nowego usera");
         newUser = new User(4, "Adam", "Kowalski", "Poland");
         userController.createNewUser(newUser);
 
@@ -36,11 +36,16 @@ public class Starter implements CommandLineRunner {
         updaterUser.setLastName("Wójcicki");
         System.out.println("Update");
         userController.updateUser(updaterUser);
-        userController.deleteUser(1);
+
         for (User u :
                 userController.getAllUser()) {
             System.out.println(u);
         }
-
+        userController.deleteUser(4);
+        System.out.println("delete");
+        for (User u :
+                userController.getAllUser()) {
+            System.out.println(u);
+        }
     }
 }

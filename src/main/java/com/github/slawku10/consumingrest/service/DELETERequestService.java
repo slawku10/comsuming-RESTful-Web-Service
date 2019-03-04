@@ -15,7 +15,7 @@ public class DELETERequestService {
     }
 
     public void deleteUser(int id){
-        String endpoint = serverURI +"/delete-user+id="+id;
+        String endpoint = serverURI +"/delete-user?id="+id;
         restTemplate.delete(endpoint);
     }
 }
